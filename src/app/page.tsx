@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Play, BookOpen, Clock } from 'lucide-react';
+import { Play, BookOpen } from 'lucide-react';
 import { chapterList } from '@/data';
 
 export default function HomePage() {
