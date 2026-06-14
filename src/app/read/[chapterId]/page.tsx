@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, Volume2, VolumeX, Moon, Sun, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Volume2, VolumeX, Moon, Sun, ChevronLeft, ChevronRight, ArrowUp } from 'lucide-react';
 import { chapters, chapterList } from '@/data';
 import { WebtoonPanel } from '@/components/WebtoonPanel';
 import { useAudioStore } from '@/store/useAudioStore';
@@ -15,6 +15,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
   
   const [showOverlay, setShowOverlay] = useState(true);
   const [hasStartedAudio, setHasStartedAudio] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const { isMuted, toggleMute, unlockAudioContext, stopAll } = useAudioStore();
   const { isDarkMode, toggleDarkMode } = useSettingsStore();
@@ -29,7 +30,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
     return () => stopAll();
   }, [chapterId, stopAll]);
 
-  // Hide overlay on scroll
+  // Hide overlay on scroll and track scroll position for back to top
   useEffect(() => {
     let lastScrollY = window.scrollY;
     
@@ -39,6 +40,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
         setShowOverlay(false);
         lastScrollY = currentScrollY;
       }
+      setShowScrollTop(currentScrollY > 800);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -191,6 +193,16 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
           </button>
         </div>
       </div>
+
+      {/* Smart Floating Back to Top Button */}
+      <button
+        onClick={(e) => { e.stopPropagation(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        className={`fixed right-6 z-30 p-3 bg-white text-black rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300 hover:scale-105 active:scale-95 md:right-10 ${
+          showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        } ${showOverlay ? 'bottom-20' : 'bottom-6 md:bottom-10'}`}
+      >
+        <ArrowUp size={24} />
+      </button>
     </main>
   );
 }

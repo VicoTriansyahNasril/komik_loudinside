@@ -29,8 +29,8 @@ export const chapter2: WebtoonChapter = {
         { id: '2U', imageUrl: '/assets/chapters/CHAPTER 2/2U.png', audioUrl: null },
         { id: '2V', imageUrl: '/assets/chapters/CHAPTER 2/2V.png', audioUrl: null },
         { id: '2W', imageUrl: '/assets/chapters/CHAPTER 2/2W.png', audioUrl: null },
-        { id: '2X', imageUrl: '/assets/chapters/CHAPTER 2/2X.png', audioUrl: null },
-        { id: '2Y', imageUrl: '/assets/chapters/CHAPTER 2/2Y.png', audioUrl: null },
-        { id: '2Z', imageUrl: '/assets/chapters/CHAPTER 2/2Z.png', audioUrl: null }
+        { id: '2X', imageUrl: '/assets/chapters/CHAPTER 2/2X.png', audioUrl: null }
+        // { id: '2Y', imageUrl: '/assets/chapters/CHAPTER 2/2Y.png', audioUrl: null },
+        // { id: '2Z', imageUrl: '/assets/chapters/CHAPTER 2/2Z.png', audioUrl: null }
     ],
 };
