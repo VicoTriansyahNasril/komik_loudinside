@@ -3,8 +3,8 @@ export type AudioType = 'bgm' | 'sfx';
 export interface WebtoonPanelData {
     id: string;
     imageUrl: string;
-    audioUrl?: string | null;
-    audioType?: AudioType;
+    bgmUrl?: string | null;
+    sfxUrl?: string | null;
 }
 
 export interface WebtoonChapter {

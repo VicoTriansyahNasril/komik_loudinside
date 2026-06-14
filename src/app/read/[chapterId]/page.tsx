@@ -14,6 +14,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
   const activeChapter = chapters[chapterId];
   
   const [showOverlay, setShowOverlay] = useState(true);
+  const [showChapterMenu, setShowChapterMenu] = useState(false);
   const [hasStartedAudio, setHasStartedAudio] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -38,6 +39,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
       const currentScrollY = window.scrollY;
       if (Math.abs(currentScrollY - lastScrollY) > 50) {
         setShowOverlay(false);
+        setShowChapterMenu(false);
         lastScrollY = currentScrollY;
       }
       setShowScrollTop(currentScrollY > 800);
@@ -63,7 +65,12 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
       unlockAudioContext();
       setHasStartedAudio(true);
     }
-    setShowOverlay(!showOverlay);
+    if (showOverlay) {
+        setShowOverlay(false);
+        setShowChapterMenu(false);
+    } else {
+        setShowOverlay(true);
+    }
   };
 
   const handleNavigation = (id: string) => {
@@ -137,6 +144,42 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
         {/* End of Chapter Navigation inside the reader flow */}
         <div className={`p-8 mt-10 border-t ${isDarkMode ? 'border-zinc-800' : 'border-zinc-200'}`}>
           <h3 className="text-center font-bold mb-6">Akhir dari {activeChapter.title}</h3>
+          
+          {/* Chapter Selection List */}
+          <div className="mb-8">
+            <h4 className={`text-sm font-semibold mb-3 ${isDarkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Pilih Chapter Lain</h4>
+            <div 
+              className="flex overflow-x-auto gap-3 pb-4 snap-x"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {chapterList.map((ch, idx) => {
+                const isCurrent = ch.id === chapterId;
+                const thumb = ch.panels[0]?.imageUrl;
+                return (
+                  <button
+                    key={ch.id}
+                    onClick={(e) => { e.stopPropagation(); handleNavigation(ch.id); }}
+                    className={`relative shrink-0 w-24 h-32 md:w-32 md:h-40 rounded-xl overflow-hidden snap-start transition-all duration-300 ${
+                      isCurrent ? 'ring-2 ring-blue-500 scale-105 z-10 opacity-100' : 'ring-1 ring-zinc-800 opacity-60 hover:opacity-100 hover:scale-105'
+                    }`}
+                  >
+                    {thumb && (
+                      <img src={thumb} alt={ch.title} className="w-full h-full object-cover object-top" />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                    <div className="absolute bottom-2 left-0 right-0 text-center">
+                      <span className="text-white font-bold drop-shadow-lg md:text-lg">#{idx + 1}</span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+            {/* Inline style to hide scrollbar for webkit */}
+            <style dangerouslySetInnerHTML={{__html: `
+              .overflow-x-auto::-webkit-scrollbar { display: none; }
+            `}} />
+          </div>
+
           <div className="flex items-center justify-between gap-4">
             {prevChapter ? (
               <button 
@@ -171,7 +214,41 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
           showOverlay ? 'translate-y-0' : 'translate-y-full'
         }`}
       >
-        <div className="bg-black/80 backdrop-blur-md text-white border-t border-white/10 px-4 py-3 flex items-center justify-between max-w-2xl mx-auto shadow-lg rounded-t-xl">
+        {/* Expanded Chapter Menu */}
+        <div 
+          className={`absolute bottom-full left-0 right-0 bg-black/90 backdrop-blur-xl border-t border-white/10 px-4 transition-all duration-300 ease-in-out overflow-hidden origin-bottom max-w-2xl mx-auto rounded-t-xl flex flex-col justify-end ${
+            showChapterMenu ? 'h-40 py-4 opacity-100' : 'h-0 py-0 opacity-0 pointer-events-none'
+          }`}
+        >
+          <div 
+            className="flex overflow-x-auto gap-3 snap-x"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {chapterList.map((ch, idx) => {
+              const isCurrent = ch.id === chapterId;
+              const thumb = ch.panels[0]?.imageUrl;
+              return (
+                <button
+                  key={ch.id}
+                  onClick={(e) => { e.stopPropagation(); setShowChapterMenu(false); handleNavigation(ch.id); }}
+                  className={`relative shrink-0 w-20 h-28 rounded-lg overflow-hidden snap-start transition-all ${
+                    isCurrent ? 'ring-2 ring-blue-500 scale-105 opacity-100' : 'opacity-50 hover:opacity-100'
+                  }`}
+                >
+                  {thumb && (
+                    <img src={thumb} alt={ch.title} className="w-full h-full object-cover object-top" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
+                  <div className="absolute bottom-1 left-0 right-0 text-center text-xs font-bold text-white drop-shadow-md">
+                    #{idx + 1}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className={`bg-black/90 backdrop-blur-md text-white px-4 py-3 flex items-center justify-between max-w-2xl mx-auto shadow-[0_-10px_40px_rgba(0,0,0,0.5)] transition-all duration-300 ${!showChapterMenu ? 'rounded-t-xl border-t border-white/10' : ''}`}>
           <button 
             disabled={!prevChapter}
             onClick={(e) => { e.stopPropagation(); if (prevChapter) handleNavigation(prevChapter.id); }}
@@ -180,9 +257,13 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
             <ChevronLeft size={24} />
           </button>
           
-          <span className="text-sm font-semibold tracking-widest text-zinc-400">
+          <button 
+            onClick={(e) => { e.stopPropagation(); setShowChapterMenu(!showChapterMenu); }}
+            className="text-sm font-semibold tracking-widest text-zinc-300 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/10 flex items-center gap-2"
+          >
             {chapterIndex + 1} / {chapterList.length}
-          </span>
+            <ChevronRight size={16} className={`transition-transform duration-300 ${showChapterMenu ? '-rotate-90' : 'rotate-90'}`} />
+          </button>
           
           <button 
             disabled={!nextChapter}

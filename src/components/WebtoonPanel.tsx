@@ -18,17 +18,25 @@ export function WebtoonPanel({ data, priority = false }: WebtoonPanelProps) {
         triggerOnce: false,
     });
 
-    const { playBgm, playSfx } = useAudioStore();
+    const { registerBgm, unregisterBgm, playSfx } = useAudioStore();
+    const [hasPlayedSfx, setHasPlayedSfx] = useState(false);
 
     useEffect(() => {
-        if (inView && data.audioUrl && data.audioType) {
-            if (data.audioType === 'bgm') {
-                playBgm(data.audioUrl);
+        if (data.bgmUrl) {
+            if (inView) {
+                registerBgm(data.bgmUrl);
             } else {
-                playSfx(data.audioUrl);
+                unregisterBgm(data.bgmUrl);
             }
         }
-    }, [inView, data, playBgm, playSfx]);
+    }, [inView, data.bgmUrl, registerBgm, unregisterBgm]);
+
+    useEffect(() => {
+        if (inView && data.sfxUrl && !hasPlayedSfx) {
+            playSfx(data.sfxUrl);
+            setHasPlayedSfx(true);
+        }
+    }, [inView, data.sfxUrl, hasPlayedSfx, playSfx]);
 
     return (
         <div 
