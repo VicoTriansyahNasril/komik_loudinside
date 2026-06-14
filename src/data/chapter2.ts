@@ -1,0 +1,34 @@
+import { WebtoonChapter } from './schema';
+
+export const chapter2: WebtoonChapter = {
+    id: 'chapter-2',
+    title: 'CHAPTER 2',
+    panels: [
+        { id: '2A', imageUrl: '/assets/chapters/CHAPTER 2/2A.png', audioUrl: null },
+        { id: '2B', imageUrl: '/assets/chapters/CHAPTER 2/2B.png', audioUrl: null },
+        { id: '2C', imageUrl: '/assets/chapters/CHAPTER 2/2C.png', audioUrl: null },
+        { id: '2D', imageUrl: '/assets/chapters/CHAPTER 2/2D.png', audioUrl: null },
+        { id: '2E', imageUrl: '/assets/chapters/CHAPTER 2/2E.png', audioUrl: null },
+        { id: '2F', imageUrl: '/assets/chapters/CHAPTER 2/2F.png', audioUrl: null },
+        { id: '2G', imageUrl: '/assets/chapters/CHAPTER 2/2G.png', audioUrl: null },
+        { id: '2H', imageUrl: '/assets/chapters/CHAPTER 2/2H.png', audioUrl: null },
+        { id: '2I', imageUrl: '/assets/chapters/CHAPTER 2/2I.png', audioUrl: null },
+        { id: '2J', imageUrl: '/assets/chapters/CHAPTER 2/2J.png', audioUrl: null },
+        { id: '2K', imageUrl: '/assets/chapters/CHAPTER 2/2K.png', audioUrl: null },
+        { id: '2L', imageUrl: '/assets/chapters/CHAPTER 2/2L.png', audioUrl: null },
+        { id: '2M', imageUrl: '/assets/chapters/CHAPTER 2/2M.png', audioUrl: null },
+        { id: '2N', imageUrl: '/assets/chapters/CHAPTER 2/2N.png', audioUrl: null },
+        { id: '2O', imageUrl: '/assets/chapters/CHAPTER 2/2O.png', audioUrl: null },
+        { id: '2P', imageUrl: '/assets/chapters/CHAPTER 2/2P.png', audioUrl: null },
+        { id: '2Q', imageUrl: '/assets/chapters/CHAPTER 2/2Q.png', audioUrl: null },
+        { id: '2R', imageUrl: '/assets/chapters/CHAPTER 2/2R.png', audioUrl: null },
+        { id: '2S', imageUrl: '/assets/chapters/CHAPTER 2/2S.png', audioUrl: null },
+        { id: '2T', imageUrl: '/assets/chapters/CHAPTER 2/2T.png', audioUrl: null },
+        { id: '2U', imageUrl: '/assets/chapters/CHAPTER 2/2U.png', audioUrl: null },
+        { id: '2V', imageUrl: '/assets/chapters/CHAPTER 2/2V.png', audioUrl: null },
+        { id: '2W', imageUrl: '/assets/chapters/CHAPTER 2/2W.png', audioUrl: null },
+        { id: '2X', imageUrl: '/assets/chapters/CHAPTER 2/2X.png', audioUrl: null },
+        { id: '2Y', imageUrl: '/assets/chapters/CHAPTER 2/2Y.png', audioUrl: null },
+        { id: '2Z', imageUrl: '/assets/chapters/CHAPTER 2/2Z.png', audioUrl: null }
+    ],
+};
