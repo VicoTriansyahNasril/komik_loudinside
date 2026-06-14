@@ -71,15 +71,11 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
 
   return (
     <main 
-      className={`min-h-screen relative transition-colors duration-300 ${
+      className={`min-h-screen relative transition-colors duration-300 cursor-pointer ${
         isDarkMode ? 'bg-black text-white' : 'bg-zinc-100 text-black'
       }`}
+      onClick={handleStartInteraction}
     >
-      {/* Clickable Area to Toggle Overlay */}
-      <div 
-        className="fixed inset-0 z-30 cursor-pointer"
-        onClick={handleStartInteraction}
-      />
 
       {/* Top Overlay */}
       <div 

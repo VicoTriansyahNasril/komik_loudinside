@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-black text-white pb-20">
       {/* Hero Section */}
-      <div className="relative w-full h-[50vh] md:h-[60vh]">
+      <div className="relative w-full min-h-[60vh] flex flex-col items-center justify-center pt-20 pb-12">
         {/* Blurred Background */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {coverImage && (
@@ -29,7 +29,7 @@ export default function HomePage() {
         </div>
 
         {/* Content */}
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-10 px-4 text-center max-w-4xl mx-auto">
+        <div className="relative z-10 flex flex-col items-center px-4 text-center max-w-4xl mx-auto w-full">
           <div className="w-40 h-56 md:w-56 md:h-80 relative rounded-xl overflow-hidden shadow-2xl mb-6 border border-zinc-800">
             {coverImage ? (
               <Image
