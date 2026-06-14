@@ -5,6 +5,8 @@ export const chapter2: WebtoonChapter = {
     title: 'CHAPTER 2',
     panels: [
         { id: '2A', imageUrl: '/assets/chapters/CHAPTER 2/2A.png', audioUrl: null },
+        { id: '2A1', imageUrl: '/assets/chapters/CHAPTER 2/2A1.png', audioUrl: null },
+        { id: '2A2', imageUrl: '/assets/chapters/CHAPTER 2/2A2.png', audioUrl: null },
         { id: '2B', imageUrl: '/assets/chapters/CHAPTER 2/2B.png', audioUrl: null },
         { id: '2C', imageUrl: '/assets/chapters/CHAPTER 2/2C.png', audioUrl: null },
         { id: '2D', imageUrl: '/assets/chapters/CHAPTER 2/2D.png', audioUrl: null },

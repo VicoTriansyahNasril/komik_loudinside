@@ -1,0 +1,35 @@
+import { WebtoonChapter } from './schema';
+
+export const chapter6: WebtoonChapter = {
+    id: 'chapter-6',
+    title: 'CHAPTER 6',
+    panels: [
+        { id: '6A', imageUrl: '/assets/chapters/CHAPTER 6/6A.png', audioUrl: null },
+        { id: '6B', imageUrl: '/assets/chapters/CHAPTER 6/6B.png', audioUrl: null },
+        { id: '6C', imageUrl: '/assets/chapters/CHAPTER 6/6C.png', audioUrl: null },
+        { id: '6D', imageUrl: '/assets/chapters/CHAPTER 6/6D.png', audioUrl: null },
+        { id: '6E', imageUrl: '/assets/chapters/CHAPTER 6/6E.png', audioUrl: null },
+        { id: '6F', imageUrl: '/assets/chapters/CHAPTER 6/6F.png', audioUrl: null },
+        { id: '6G', imageUrl: '/assets/chapters/CHAPTER 6/6G.png', audioUrl: null },
+        { id: '6H', imageUrl: '/assets/chapters/CHAPTER 6/6H.png', audioUrl: null },
+        { id: '6I', imageUrl: '/assets/chapters/CHAPTER 6/6I.png', audioUrl: null },
+        { id: '6J', imageUrl: '/assets/chapters/CHAPTER 6/6J.png', audioUrl: null },
+        { id: '6K', imageUrl: '/assets/chapters/CHAPTER 6/6K.png', audioUrl: null },
+        { id: '6L', imageUrl: '/assets/chapters/CHAPTER 6/6L.png', audioUrl: null },
+        { id: '6M', imageUrl: '/assets/chapters/CHAPTER 6/6M.png', audioUrl: null },
+        { id: '6N', imageUrl: '/assets/chapters/CHAPTER 6/6N.png', audioUrl: null },
+        { id: '6O', imageUrl: '/assets/chapters/CHAPTER 6/6O.png', audioUrl: null },
+        { id: '6P', imageUrl: '/assets/chapters/CHAPTER 6/6P.png', audioUrl: null },
+        { id: '6Q', imageUrl: '/assets/chapters/CHAPTER 6/6Q.png', audioUrl: null },
+        { id: '6R', imageUrl: '/assets/chapters/CHAPTER 6/6R.png', audioUrl: null },
+        { id: '6S', imageUrl: '/assets/chapters/CHAPTER 6/6S.png', audioUrl: null },
+        { id: '6T', imageUrl: '/assets/chapters/CHAPTER 6/6T.png', audioUrl: null },
+        { id: '6U', imageUrl: '/assets/chapters/CHAPTER 6/6U.png', audioUrl: null },
+        { id: '6V', imageUrl: '/assets/chapters/CHAPTER 6/6V.png', audioUrl: null },
+        { id: '6W', imageUrl: '/assets/chapters/CHAPTER 6/6W.png', audioUrl: null },
+        { id: '6X', imageUrl: '/assets/chapters/CHAPTER 6/6X.png', audioUrl: null },
+        { id: '6Y', imageUrl: '/assets/chapters/CHAPTER 6/6Y.png', audioUrl: null },
+        { id: '6Z', imageUrl: '/assets/chapters/CHAPTER 6/6Z.png', audioUrl: null },
+        { id: '6Z1', imageUrl: '/assets/chapters/CHAPTER 6/6Z1.png', audioUrl: null }
+    ],
+};

@@ -36,7 +36,7 @@ export default function HomePage() {
                 src={coverImage}
                 alt="Webtoon Cover"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
                 unoptimized
               />
             ) : (
@@ -47,7 +47,7 @@ export default function HomePage() {
           </div>
           
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-3">
-            Antigravity Webtoon
+            Loud Inside
           </h1>
           <p className="text-zinc-400 text-sm md:text-base max-w-2xl mb-6 line-clamp-3">
             Selamat datang di pengalaman membaca webtoon interaktif. Nikmati setiap panel dengan suara latar dan efek suara yang imersif. Mulai petualanganmu sekarang!
@@ -90,7 +90,7 @@ export default function HomePage() {
                       src={thumbnail}
                       alt={ch.title}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="object-cover object-top group-hover:scale-110 transition-transform duration-500"
                       unoptimized
                     />
                   ) : (
