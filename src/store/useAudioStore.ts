@@ -5,6 +5,7 @@ interface AudioState {
     bgmRefs: Map<string, number>;
     bgmInstances: Map<string, HTMLAudioElement>;
     fadeIntervals: Map<string, NodeJS.Timeout>;
+    globalPlayed: Set<string>;
     toggleMute: () => void;
     registerBgm: (url: string) => void;
     unregisterBgm: (url: string) => void;
@@ -18,6 +19,7 @@ export const useAudioStore = create<AudioState>((set, get) => ({
     bgmRefs: new Map(),
     bgmInstances: new Map(),
     fadeIntervals: new Map(),
+    globalPlayed: new Set(),
 
     toggleMute: () => {
         const { isMuted, bgmInstances } = get();
@@ -31,9 +33,17 @@ export const useAudioStore = create<AudioState>((set, get) => ({
     },
 
     registerBgm: (url: string) => {
-        const { isMuted, bgmRefs, bgmInstances, fadeIntervals } = get();
+        const { isMuted, bgmRefs, bgmInstances, fadeIntervals, globalPlayed } = get();
         
+        const isSpecialSound = url.toLowerCase().includes('sounds_1a_til_1d');
         const count = bgmRefs.get(url) || 0;
+
+        if (isSpecialSound && globalPlayed.has(url) && count === 0) {
+            bgmRefs.set(url, count + 1);
+            set({ bgmRefs: new Map(bgmRefs) });
+            return;
+        }
+
         bgmRefs.set(url, count + 1);
 
         if (count === 0) {
@@ -41,7 +51,7 @@ export const useAudioStore = create<AudioState>((set, get) => ({
             let audio = bgmInstances.get(url);
             if (!audio) {
                 audio = new Audio(url);
-                audio.loop = true;
+                audio.loop = false;
                 bgmInstances.set(url, audio);
             }
             
@@ -50,6 +60,10 @@ export const useAudioStore = create<AudioState>((set, get) => ({
             // Clear any existing fade out interval
             if (fadeIntervals.has(url)) {
                 clearInterval(fadeIntervals.get(url));
+            }
+
+            if (isSpecialSound) {
+                globalPlayed.add(url);
             }
 
             audio.volume = 0;
@@ -69,7 +83,12 @@ export const useAudioStore = create<AudioState>((set, get) => ({
             fadeIntervals.set(url, interval);
         }
 
-        set({ bgmRefs: new Map(bgmRefs), bgmInstances: new Map(bgmInstances), fadeIntervals: new Map(fadeIntervals) });
+        set({ 
+            bgmRefs: new Map(bgmRefs), 
+            bgmInstances: new Map(bgmInstances), 
+            fadeIntervals: new Map(fadeIntervals),
+            globalPlayed: new Set(globalPlayed)
+        });
     },
 
     unregisterBgm: (url: string) => {

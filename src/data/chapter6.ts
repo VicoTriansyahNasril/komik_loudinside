@@ -7,7 +7,7 @@ export const chapter6: WebtoonChapter = {
         { id: '6A', imageUrl: '/assets/chapters/CHAPTER 6/6A.png', bgmUrl: null, sfxUrl: null },
         { id: '6B', imageUrl: '/assets/chapters/CHAPTER 6/6B.png', bgmUrl: null, sfxUrl: null },
         { id: '6C', imageUrl: '/assets/chapters/CHAPTER 6/6C.png', bgmUrl: null, sfxUrl: null },
-        { id: '6D', imageUrl: '/assets/chapters/CHAPTER 6/6D.png', bgmUrl: null, sfxUrl: null },
+        { id: '6D', imageUrl: '/assets/chapters/CHAPTER 6/6D.png', bgmUrl: null, sfxUrl: '/assets/chapters/SFX/sounds_6D.MP3' },
         { id: '6E', imageUrl: '/assets/chapters/CHAPTER 6/6E.png', bgmUrl: null, sfxUrl: null },
         { id: '6F', imageUrl: '/assets/chapters/CHAPTER 6/6F.png', bgmUrl: null, sfxUrl: null },
         { id: '6G', imageUrl: '/assets/chapters/CHAPTER 6/6G.png', bgmUrl: null, sfxUrl: null },

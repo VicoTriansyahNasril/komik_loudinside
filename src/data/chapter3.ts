@@ -22,14 +22,14 @@ export const chapter3: WebtoonChapter = {
         { id: '3P', imageUrl: '/assets/chapters/CHAPTER 3/3P.png', bgmUrl: '/assets/chapters/SFX/sounds_3A_til_3R.mp3', sfxUrl: null },
         { id: '3Q', imageUrl: '/assets/chapters/CHAPTER 3/3Q.png', bgmUrl: '/assets/chapters/SFX/sounds_3A_til_3R.mp3', sfxUrl: null },
         { id: '3R', imageUrl: '/assets/chapters/CHAPTER 3/3R.png', bgmUrl: '/assets/chapters/SFX/sounds_3A_til_3R.mp3', sfxUrl: null },
-        { id: '3S', imageUrl: '/assets/chapters/CHAPTER 3/3S.png', bgmUrl: null, sfxUrl: null },
-        { id: '3T', imageUrl: '/assets/chapters/CHAPTER 3/3T.png', bgmUrl: null, sfxUrl: null },
-        { id: '3U', imageUrl: '/assets/chapters/CHAPTER 3/3U.png', bgmUrl: null, sfxUrl: null },
-        { id: '3V', imageUrl: '/assets/chapters/CHAPTER 3/3V.png', bgmUrl: null, sfxUrl: null },
-        { id: '3W', imageUrl: '/assets/chapters/CHAPTER 3/3W.png', bgmUrl: null, sfxUrl: null },
-        { id: '3X', imageUrl: '/assets/chapters/CHAPTER 3/3X.png', bgmUrl: null, sfxUrl: null },
-        { id: '3Y', imageUrl: '/assets/chapters/CHAPTER 3/3Y.png', bgmUrl: null, sfxUrl: null },
-        { id: '3Z', imageUrl: '/assets/chapters/CHAPTER 3/3Z.png', bgmUrl: null, sfxUrl: null },
-        { id: '3ZZ', imageUrl: '/assets/chapters/CHAPTER 3/3ZZ.png', bgmUrl: null, sfxUrl: null }
+        { id: '3S', imageUrl: '/assets/chapters/CHAPTER 3/3S.png', bgmUrl: null, sfxUrl: '/assets/chapters/SFX/sounds_3S.MP3' },
+        { id: '3T', imageUrl: '/assets/chapters/CHAPTER 3/3T.png', bgmUrl: '/assets/chapters/SFX/sounds_3T_til_3ZZ.MP3', sfxUrl: null },
+        { id: '3U', imageUrl: '/assets/chapters/CHAPTER 3/3U.png', bgmUrl: '/assets/chapters/SFX/sounds_3T_til_3ZZ.MP3', sfxUrl: null },
+        { id: '3V', imageUrl: '/assets/chapters/CHAPTER 3/3V.png', bgmUrl: '/assets/chapters/SFX/sounds_3T_til_3ZZ.MP3', sfxUrl: null },
+        { id: '3W', imageUrl: '/assets/chapters/CHAPTER 3/3W.png', bgmUrl: '/assets/chapters/SFX/sounds_3T_til_3ZZ.MP3', sfxUrl: null },
+        { id: '3X', imageUrl: '/assets/chapters/CHAPTER 3/3X.png', bgmUrl: '/assets/chapters/SFX/sounds_3T_til_3ZZ.MP3', sfxUrl: null },
+        { id: '3Y', imageUrl: '/assets/chapters/CHAPTER 3/3Y.png', bgmUrl: '/assets/chapters/SFX/sounds_3T_til_3ZZ.MP3', sfxUrl: null },
+        { id: '3Z', imageUrl: '/assets/chapters/CHAPTER 3/3Z.png', bgmUrl: '/assets/chapters/SFX/sounds_3T_til_3ZZ.MP3', sfxUrl: null },
+        { id: '3ZZ', imageUrl: '/assets/chapters/CHAPTER 3/3ZZ.png', bgmUrl: '/assets/chapters/SFX/sounds_3T_til_3ZZ.MP3', sfxUrl: null }
     ],
 };
