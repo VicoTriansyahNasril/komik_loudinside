@@ -3,6 +3,7 @@ import { WebtoonChapter } from './schema';
 export const epilogue: WebtoonChapter = {
     id: 'epilogue',
     title: 'EPILOGUE',
+    coverUrl: '/assets/chapters/COVER/cover_chapter_epilogue.png',
     panels: [
         { id: '6Z2', imageUrl: '/assets/chapters/EPILOGUE/6Z2.png', bgmUrl: '/assets/chapters/SFX/sounds 6Z2_til_7I.mp3', sfxUrl: null },
         { id: '6Z3', imageUrl: '/assets/chapters/EPILOGUE/6Z3.png', bgmUrl: '/assets/chapters/SFX/sounds 6Z2_til_7I.mp3', sfxUrl: null },

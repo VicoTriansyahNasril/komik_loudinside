@@ -3,6 +3,7 @@ import { WebtoonChapter } from './schema';
 export const chapter6: WebtoonChapter = {
     id: 'chapter-6',
     title: 'CHAPTER 6',
+    coverUrl: '/assets/chapters/COVER/cover_chapter_6.png',
     panels: [
         { id: '6A', imageUrl: '/assets/chapters/CHAPTER 6/6A.png', bgmUrl: null, sfxUrl: null },
         { id: '6B', imageUrl: '/assets/chapters/CHAPTER 6/6B.png', bgmUrl: null, sfxUrl: null },

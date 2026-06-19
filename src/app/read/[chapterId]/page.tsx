@@ -154,12 +154,12 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
             >
               {chapterList.map((ch, idx) => {
                 const isCurrent = ch.id === chapterId;
-                const thumb = ch.panels[0]?.imageUrl;
+                const thumb = ch.coverUrl || ch.panels[0]?.imageUrl;
                 return (
                   <button
                     key={ch.id}
                     onClick={(e) => { e.stopPropagation(); handleNavigation(ch.id); }}
-                    className={`relative shrink-0 w-24 h-32 md:w-32 md:h-40 rounded-xl overflow-hidden snap-start transition-all duration-300 ${
+                    className={`relative shrink-0 w-[202px] h-[142px] rounded-xl overflow-hidden snap-start transition-all duration-300 ${
                       isCurrent ? 'ring-2 ring-blue-500 scale-105 z-10 opacity-100' : 'ring-1 ring-zinc-800 opacity-60 hover:opacity-100 hover:scale-105'
                     }`}
                   >
@@ -217,7 +217,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
         {/* Expanded Chapter Menu */}
         <div 
           className={`absolute bottom-full left-0 right-0 bg-black/90 backdrop-blur-xl border-t border-white/10 px-4 transition-all duration-300 ease-in-out overflow-hidden origin-bottom max-w-2xl mx-auto rounded-t-xl flex flex-col justify-end ${
-            showChapterMenu ? 'h-40 py-4 opacity-100' : 'h-0 py-0 opacity-0 pointer-events-none'
+            showChapterMenu ? 'h-48 py-4 opacity-100' : 'h-0 py-0 opacity-0 pointer-events-none'
           }`}
         >
           <div 
@@ -226,12 +226,12 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
           >
             {chapterList.map((ch, idx) => {
               const isCurrent = ch.id === chapterId;
-              const thumb = ch.panels[0]?.imageUrl;
+              const thumb = ch.coverUrl || ch.panels[0]?.imageUrl;
               return (
                 <button
                   key={ch.id}
                   onClick={(e) => { e.stopPropagation(); setShowChapterMenu(false); handleNavigation(ch.id); }}
-                  className={`relative shrink-0 w-20 h-28 rounded-lg overflow-hidden snap-start transition-all ${
+                  className={`relative shrink-0 w-[202px] h-[142px] rounded-lg overflow-hidden snap-start transition-all ${
                     isCurrent ? 'ring-2 ring-blue-500 scale-105 opacity-100' : 'opacity-50 hover:opacity-100'
                   }`}
                 >

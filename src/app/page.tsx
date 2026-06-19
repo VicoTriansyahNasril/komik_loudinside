@@ -7,7 +7,7 @@ import { chapterList } from '@/data';
 
 export default function HomePage() {
   // Use the first panel of the first chapter as the cover image
-  const coverImage = chapterList[0]?.panels[0]?.imageUrl || '';
+  const coverImage = chapterList[0]?.coverUrl || chapterList[0]?.panels[0]?.imageUrl || '';
   const firstChapterId = chapterList[0]?.id;
 
   return (
@@ -30,7 +30,7 @@ export default function HomePage() {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center px-4 text-center max-w-4xl mx-auto w-full">
-          <div className="w-40 h-56 md:w-56 md:h-80 relative rounded-xl overflow-hidden shadow-2xl mb-6 border border-zinc-800">
+          <div className="w-[202px] h-[142px] relative rounded-xl overflow-hidden shadow-2xl mb-6 border border-zinc-800">
             {coverImage ? (
               <Image
                 src={coverImage}
@@ -76,7 +76,7 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {chapterList.map((ch, index) => {
-            const thumbnail = ch.panels[0]?.imageUrl;
+            const thumbnail = ch.coverUrl || ch.panels[0]?.imageUrl;
             
             return (
               <Link 
@@ -84,7 +84,7 @@ export default function HomePage() {
                 href={`/read/${ch.id}`}
                 className="group flex bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-zinc-600 transition-all hover:bg-zinc-800/80 cursor-pointer"
               >
-                <div className="w-24 h-24 md:w-32 md:h-32 shrink-0 relative bg-zinc-800">
+                <div className="w-[202px] h-[142px] shrink-0 relative bg-zinc-800">
                   {thumbnail ? (
                     <Image
                       src={thumbnail}
@@ -104,12 +104,7 @@ export default function HomePage() {
                   <h3 className="font-bold text-white text-lg line-clamp-1 group-hover:text-blue-400 transition-colors">
                     {ch.title}
                   </h3>
-                  <div className="flex items-center gap-4 mt-2 text-zinc-500 text-xs">
-                    <span className="flex items-center gap-1">
-                      <BookOpen size={14} />
-                      {ch.panels.length} Panel
-                    </span>
-                  </div>
+
                 </div>
               </Link>
             );

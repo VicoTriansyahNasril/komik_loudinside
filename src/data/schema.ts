@@ -10,5 +10,6 @@ export interface WebtoonPanelData {
 export interface WebtoonChapter {
     id: string;
     title: string;
+    coverUrl?: string;
     panels: WebtoonPanelData[];
 }
