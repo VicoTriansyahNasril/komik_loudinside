@@ -75,7 +75,7 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {chapterList.map((ch, index) => {
+          {chapterList.map((ch) => {
             const thumbnail = ch.coverUrl || ch.panels[0]?.imageUrl;
             
             return (
