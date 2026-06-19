@@ -14,8 +14,9 @@ interface WebtoonPanelProps {
 export function WebtoonPanel({ data, priority = false }: WebtoonPanelProps) {
     const [isLoaded, setIsLoaded] = useState(false);
     const { ref, inView } = useInView({
-        threshold: 0.5,
+        threshold: 0,
         triggerOnce: false,
+        rootMargin: '-5% 0px -5% 0px'
     });
 
     const { registerBgm, unregisterBgm, playSfx } = useAudioStore();
