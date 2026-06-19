@@ -31,7 +31,5 @@ export const chapter2: WebtoonChapter = {
         { id: '2V', imageUrl: '/assets/chapters/CHAPTER 2/2V.png', bgmUrl: null, sfxUrl: null },
         { id: '2W', imageUrl: '/assets/chapters/CHAPTER 2/2W.png', bgmUrl: null, sfxUrl: null },
         { id: '2X', imageUrl: '/assets/chapters/CHAPTER 2/2X.png', bgmUrl: null, sfxUrl: null }
-        // { id: '2Y', imageUrl: '/assets/chapters/CHAPTER 2/2Y.png', bgmUrl: null, sfxUrl: null },
-        // { id: '2Z', imageUrl: '/assets/chapters/CHAPTER 2/2Z.png', bgmUrl: null, sfxUrl: null }
     ],
 };

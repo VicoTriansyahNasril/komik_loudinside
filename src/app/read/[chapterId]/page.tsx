@@ -19,7 +19,6 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   const { isMuted, toggleMute, unlockAudioContext, stopAll } = useAudioStore();
-  const { isDarkMode, toggleDarkMode } = useSettingsStore();
 
   // Find index for next/prev
   const chapterIndex = chapterList.findIndex(ch => ch.id === chapterId);
@@ -80,9 +79,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
 
   return (
     <main 
-      className={`min-h-screen relative transition-colors duration-300 cursor-pointer ${
-        isDarkMode ? 'bg-black text-white' : 'bg-zinc-100 text-black'
-      }`}
+      className="min-h-screen relative transition-colors duration-300 cursor-pointer bg-zinc-100 text-black"
       onClick={handleStartInteraction}
     >
 
@@ -92,35 +89,28 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
           showOverlay ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <div className="bg-black/80 backdrop-blur-md text-white border-b border-white/10 px-4 py-3 flex items-center justify-between shadow-lg">
+        <div className="bg-white/90 backdrop-blur-md text-zinc-900 border-b border-zinc-200 px-4 py-3 flex items-center justify-between shadow-sm">
           <div className="flex items-center gap-3">
             <button 
               onClick={(e) => { e.stopPropagation(); router.push('/'); }}
-              className="p-2 hover:bg-white/10 rounded-full transition-colors"
+              className="p-2 hover:bg-zinc-100 rounded-full transition-colors"
             >
               <ArrowLeft size={24} />
             </button>
             <div>
               <h1 className="font-bold text-lg leading-tight line-clamp-1">{activeChapter.title}</h1>
-              <p className="text-xs text-zinc-400">EPISODE {chapterIndex + 1}</p>
+              <p className="text-xs text-zinc-500 font-medium">EPISODE {chapterIndex + 1}</p>
             </div>
           </div>
           
           <div className="flex items-center gap-2">
-            <button 
-              onClick={(e) => { e.stopPropagation(); toggleDarkMode(); }}
-              className="p-2 hover:bg-white/10 rounded-full transition-colors"
-              title="Toggle Theme"
-            >
-              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
             <button 
               onClick={(e) => { 
                 e.stopPropagation(); 
                 if (!hasStartedAudio) unlockAudioContext();
                 toggleMute(); 
               }}
-              className="p-2 hover:bg-white/10 rounded-full transition-colors"
+              className="p-2 hover:bg-zinc-100 rounded-full transition-colors"
               title="Toggle Audio"
             >
               {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
@@ -130,9 +120,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
       </div>
 
       {/* Reader Container */}
-      <div className={`max-w-2xl mx-auto w-full flex flex-col pb-32 min-h-screen relative z-10 ${
-        isDarkMode ? 'bg-black shadow-[0_0_50px_rgba(255,255,255,0.05)]' : 'bg-white shadow-2xl'
-      }`}>
+      <div className="max-w-2xl mx-auto w-full flex flex-col pb-32 min-h-screen relative z-10 bg-white shadow-2xl">
         {activeChapter.panels.map((panel, index) => (
           <WebtoonPanel
             key={panel.id}
@@ -142,12 +130,12 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
         ))}
 
         {/* End of Chapter Navigation inside the reader flow */}
-        <div className={`p-8 mt-10 border-t ${isDarkMode ? 'border-zinc-800' : 'border-zinc-200'}`}>
+        <div className="p-8 mt-10 border-t border-zinc-200">
           <h3 className="text-center font-bold mb-6">Akhir dari {activeChapter.title}</h3>
           
           {/* Chapter Selection List */}
           <div className="mb-8">
-            <h4 className={`text-sm font-semibold mb-3 ${isDarkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Pilih Chapter Lain</h4>
+            <h4 className="text-sm font-semibold mb-3 text-zinc-600">Pilih Chapter Lain</h4>
             <div 
               className="flex overflow-x-auto gap-3 pb-4 snap-x"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
@@ -166,7 +154,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
                     {thumb && (
                       <img src={thumb} alt={ch.title} className="w-full h-full object-cover object-top" />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute bottom-2 left-0 right-0 text-center">
                       <span className="text-white font-bold drop-shadow-lg md:text-lg">#{idx + 1}</span>
                     </div>
@@ -184,9 +172,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
             {prevChapter ? (
               <button 
                 onClick={(e) => { e.stopPropagation(); handleNavigation(prevChapter.id); }}
-                className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg font-semibold transition-colors ${
-                  isDarkMode ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-zinc-200 hover:bg-zinc-300'
-                }`}
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg font-semibold transition-colors bg-zinc-100 hover:bg-zinc-200 text-zinc-700"
               >
                 <ChevronLeft size={20} />
                 <span className="hidden sm:inline">Episode</span> Sebelumnya
@@ -196,9 +182,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
             {nextChapter ? (
               <button 
                 onClick={(e) => { e.stopPropagation(); handleNavigation(nextChapter.id); }}
-                className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg font-semibold transition-colors ${
-                  isDarkMode ? 'bg-white text-black hover:bg-zinc-200' : 'bg-black text-white hover:bg-zinc-800'
-                }`}
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg font-semibold transition-colors bg-black text-white hover:bg-zinc-800"
               >
                 <span className="hidden sm:inline">Episode</span> Selanjutnya
                 <ChevronRight size={20} />
@@ -216,7 +200,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
       >
         {/* Expanded Chapter Menu */}
         <div 
-          className={`absolute bottom-full left-0 right-0 bg-black/90 backdrop-blur-xl border-t border-white/10 px-4 transition-all duration-300 ease-in-out overflow-hidden origin-bottom max-w-2xl mx-auto rounded-t-xl flex flex-col justify-end ${
+          className={`absolute bottom-full left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-zinc-200 px-4 transition-all duration-300 ease-in-out overflow-hidden origin-bottom max-w-2xl mx-auto rounded-t-xl flex flex-col justify-end shadow-[0_-20px_40px_rgba(0,0,0,0.05)] ${
             showChapterMenu ? 'h-48 py-4 opacity-100' : 'h-0 py-0 opacity-0 pointer-events-none'
           }`}
         >
@@ -232,13 +216,13 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
                   key={ch.id}
                   onClick={(e) => { e.stopPropagation(); setShowChapterMenu(false); handleNavigation(ch.id); }}
                   className={`relative shrink-0 w-[202px] h-[142px] rounded-lg overflow-hidden snap-start transition-all ${
-                    isCurrent ? 'ring-2 ring-blue-500 scale-105 opacity-100' : 'opacity-50 hover:opacity-100'
+                    isCurrent ? 'ring-2 ring-blue-500 scale-105 opacity-100 shadow-md' : 'opacity-70 hover:opacity-100'
                   }`}
                 >
                   {thumb && (
                     <img src={thumb} alt={ch.title} className="w-full h-full object-cover object-top" />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-1 left-0 right-0 text-center text-xs font-bold text-white drop-shadow-md">
                     #{idx + 1}
                   </div>
@@ -248,18 +232,18 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
           </div>
         </div>
 
-        <div className={`bg-black/90 backdrop-blur-md text-white px-4 py-3 flex items-center justify-between max-w-2xl mx-auto shadow-[0_-10px_40px_rgba(0,0,0,0.5)] transition-all duration-300 ${!showChapterMenu ? 'rounded-t-xl border-t border-white/10' : ''}`}>
+        <div className={`bg-white/90 backdrop-blur-md text-zinc-900 px-4 py-3 flex items-center justify-between max-w-2xl mx-auto shadow-[0_-10px_40px_rgba(0,0,0,0.08)] transition-all duration-300 ${!showChapterMenu ? 'rounded-t-xl border-t border-zinc-200' : ''}`}>
           <button 
             disabled={!prevChapter}
             onClick={(e) => { e.stopPropagation(); if (prevChapter) handleNavigation(prevChapter.id); }}
-            className={`p-2 rounded-full transition-colors flex items-center ${!prevChapter ? 'opacity-30' : 'hover:bg-white/10'}`}
+            className={`p-2 rounded-full transition-colors flex items-center ${!prevChapter ? 'opacity-30' : 'hover:bg-zinc-100'}`}
           >
             <ChevronLeft size={24} />
           </button>
           
           <button 
             onClick={(e) => { e.stopPropagation(); setShowChapterMenu(!showChapterMenu); }}
-            className="text-sm font-semibold tracking-widest text-zinc-300 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/10 flex items-center gap-2"
+            className="text-sm font-semibold tracking-widest text-zinc-500 hover:text-zinc-900 transition-colors px-4 py-2 rounded-full hover:bg-zinc-100 flex items-center gap-2"
           >
             {chapterIndex + 1} / {chapterList.length}
             <ChevronRight size={16} className={`transition-transform duration-300 ${showChapterMenu ? '-rotate-90' : 'rotate-90'}`} />
@@ -268,7 +252,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
           <button 
             disabled={!nextChapter}
             onClick={(e) => { e.stopPropagation(); if (nextChapter) handleNavigation(nextChapter.id); }}
-            className={`p-2 rounded-full transition-colors flex items-center ${!nextChapter ? 'opacity-30' : 'hover:bg-white/10'}`}
+            className={`p-2 rounded-full transition-colors flex items-center ${!nextChapter ? 'opacity-30' : 'hover:bg-zinc-100'}`}
           >
             <ChevronRight size={24} />
           </button>
@@ -278,7 +262,7 @@ export default function ReaderPage({ params }: { params: { chapterId: string } }
       {/* Smart Floating Back to Top Button */}
       <button
         onClick={(e) => { e.stopPropagation(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-        className={`fixed right-6 z-30 p-3 bg-white text-black rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300 hover:scale-105 active:scale-95 md:right-10 ${
+        className={`fixed right-6 z-30 p-3 bg-zinc-900 text-white rounded-full shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 md:right-10 ${
           showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'
         } ${showOverlay ? 'bottom-20' : 'bottom-6 md:bottom-10'}`}
       >
