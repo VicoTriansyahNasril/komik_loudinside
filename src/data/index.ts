@@ -4,7 +4,7 @@ import { chapter3 } from './chapter3';
 import { chapter4 } from './chapter4';
 import { chapter5 } from './chapter5';
 import { chapter6 } from './chapter6';
-import { epilogue } from './epilogue';
+import { chapter7 } from './chapter7';
 import { WebtoonChapter } from './schema';
 
 export const chapters: Record<string, WebtoonChapter> = {
@@ -14,7 +14,7 @@ export const chapters: Record<string, WebtoonChapter> = {
     'chapter-4': chapter4,
     'chapter-5': chapter5,
     'chapter-6': chapter6,
-    'epilogue': epilogue,
+    'chapter-7': chapter7,
 };
 
 export const chapterList = Object.values(chapters);

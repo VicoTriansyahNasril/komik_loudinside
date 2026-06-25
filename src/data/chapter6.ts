@@ -3,7 +3,7 @@ import { WebtoonChapter } from './schema';
 export const chapter6: WebtoonChapter = {
     id: 'chapter-6',
     title: 'CHAPTER 6',
-    coverUrl: '/assets/chapters/COVER/cover_chapter_6.png',
+    coverUrl: '/assets/chapters/COVER CHAPTER/cover_chapter_6.png',
     panels: [
         { id: '6A', imageUrl: '/assets/chapters/CHAPTER 6/6A.png', bgmUrl: null, sfxUrl: null },
         { id: '6B', imageUrl: '/assets/chapters/CHAPTER 6/6B.png', bgmUrl: null, sfxUrl: null },
@@ -20,6 +20,7 @@ export const chapter6: WebtoonChapter = {
         { id: '6M', imageUrl: '/assets/chapters/CHAPTER 6/6M.png', bgmUrl: null, sfxUrl: null },
         { id: '6N', imageUrl: '/assets/chapters/CHAPTER 6/6N.png', bgmUrl: null, sfxUrl: null },
         { id: '6O', imageUrl: '/assets/chapters/CHAPTER 6/6O.png', bgmUrl: null, sfxUrl: null },
+        { id: '6O1', imageUrl: '/assets/chapters/CHAPTER 6/6O1.png', bgmUrl: null, sfxUrl: null },
         { id: '6P', imageUrl: '/assets/chapters/CHAPTER 6/6P.png', bgmUrl: null, sfxUrl: null },
         { id: '6Q', imageUrl: '/assets/chapters/CHAPTER 6/6Q.png', bgmUrl: null, sfxUrl: null },
         { id: '6R', imageUrl: '/assets/chapters/CHAPTER 6/6R.png', bgmUrl: null, sfxUrl: null },
