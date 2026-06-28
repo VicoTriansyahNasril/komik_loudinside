@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Loud Inside - Webtoon",
   description: "Interactive Webtoon Reader",
   icons: {
-    icon: '/assets/icon_web.png',
+    icon: '/assets/chapters/LOGO/Logo Website Komik.png',
   },
 };
 

@@ -11,6 +11,7 @@ export const chapter1: WebtoonChapter = {
         { id: '1D', imageUrl: '/assets/chapters/CHAPTER 1/1D.png', bgmUrl: null, sfxUrl: null },
         { id: '1E', imageUrl: '/assets/chapters/CHAPTER 1/1E.png', bgmUrl: null, sfxUrl: null },
         { id: '1F', imageUrl: '/assets/chapters/CHAPTER 1/1F.png', bgmUrl: null, sfxUrl: null },
+        { id: '1F1', imageUrl: '/assets/chapters/CHAPTER 1/1F1.png', bgmUrl: null, sfxUrl: null },
         { id: '1G', imageUrl: '/assets/chapters/CHAPTER 1/1G.png', bgmUrl: null, sfxUrl: null },
         { id: '1H', imageUrl: '/assets/chapters/CHAPTER 1/1H.png', bgmUrl: null, sfxUrl: null },
         { id: '1I', imageUrl: '/assets/chapters/CHAPTER 1/1I.png', bgmUrl: null, sfxUrl: null },
