@@ -181,7 +181,15 @@ export default function HomePage() {
           />
         </div>
         <p className="text-zinc-500 text-xs text-center px-4">
-          &copy; {new Date().getFullYear()} Loud Inside. <br className="md:hidden" /> Sebuah karya oleh <span className="text-zinc-300 font-semibold">Selvia Widi Triannisa</span>.
+          &copy; {new Date().getFullYear()} Loud Inside. <br className="md:hidden" /> Sebuah karya oleh{' '}
+          <a 
+            href="https://www.linkedin.com/in/selviawiditriannisa/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-zinc-300 font-semibold hover:text-white hover:underline transition-colors"
+          >
+            Selvia Widi Triannisa
+          </a>.
         </p>
       </footer>
     </main>
