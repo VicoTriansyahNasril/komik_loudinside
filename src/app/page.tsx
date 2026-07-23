@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Play, BookOpen } from 'lucide-react';
@@ -10,8 +11,59 @@ export default function HomePage() {
   const coverImage = '/assets/chapters/COVER KOMIK/Cover_Vertikal.png';
   const firstChapterId = chapterList[0]?.id;
 
+  const [showSplash, setShowSplash] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+    // Optional: Only show once per session so it's not annoying when navigating back
+    const hasSeenSplash = sessionStorage.getItem('hasSeenSplash');
+    if (hasSeenSplash) {
+      setShowSplash(false);
+      return;
+    }
+
+    // Start fade out after 2 seconds
+    const fadeTimer = setTimeout(() => {
+      setFadeOut(true);
+    }, 2000);
+
+    // Completely remove from DOM after 2.5 seconds
+    const removeTimer = setTimeout(() => {
+      setShowSplash(false);
+      sessionStorage.setItem('hasSeenSplash', 'true');
+    }, 2500);
+
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(removeTimer);
+    };
+  }, []);
+
   return (
-    <main className="min-h-screen bg-black text-white pb-20">
+    <main className="min-h-screen bg-black text-white pb-10">
+      {/* Splash Screen */}
+      {showSplash && (
+        <div 
+          className={`fixed inset-0 z-50 bg-black flex flex-col items-center justify-center transition-opacity duration-500 ease-in-out ${fadeOut ? 'opacity-0' : 'opacity-100'}`}
+        >
+          <div className="flex flex-col items-center gap-6 animate-pulse">
+            <div className="relative w-48 h-16 md:w-64 md:h-20">
+              <Image
+                src="/assets/chapters/EDU/UPI-Logo-whitee.png"
+                alt="Logo UPI"
+                fill
+                className="object-contain"
+                unoptimized
+              />
+            </div>
+            <div className="text-zinc-400 text-sm md:text-base font-medium tracking-widest uppercase text-center px-4 flex flex-col items-center">
+              <span>Karya Tugas Akhir Skripsi</span>
+              <span className="text-white font-bold text-lg md:text-xl mt-2 normal-case tracking-normal">Selvia Widi Triannisa</span>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <div className="relative w-full min-h-[60vh] flex flex-col items-center justify-center pt-20 pb-12">
         {/* Blurred Background */}
@@ -116,6 +168,22 @@ export default function HomePage() {
           })}
         </div>
       </div>
+
+      {/* Footer Section */}
+      <footer className="max-w-4xl mx-auto w-full mt-16 pt-8 pb-6 border-t border-zinc-800/60 flex flex-col items-center justify-center gap-3">
+        <div className="relative w-32 h-10 opacity-60 hover:opacity-100 transition-opacity">
+          <Image
+            src="/assets/chapters/EDU/UPI-Logo-whitee.png"
+            alt="Logo UPI"
+            fill
+            className="object-contain"
+            unoptimized
+          />
+        </div>
+        <p className="text-zinc-500 text-xs text-center px-4">
+          &copy; {new Date().getFullYear()} Loud Inside. <br className="md:hidden" /> Sebuah karya tugas akhir skripsi oleh <span className="text-zinc-300 font-semibold">Selvia Widi Triannisa</span>.
+        </p>
+      </footer>
     </main>
   );
 }
