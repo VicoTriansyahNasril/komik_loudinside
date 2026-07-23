@@ -57,7 +57,7 @@ export default function HomePage() {
               />
             </div>
             <div className="text-zinc-400 text-sm md:text-base font-medium tracking-widest uppercase text-center px-4 flex flex-col items-center">
-              <span>Karya Tugas Akhir Skripsi</span>
+              <span>Karya</span>
               <span className="text-white font-bold text-lg md:text-xl mt-2 normal-case tracking-normal">Selvia Widi Triannisa</span>
             </div>
           </div>
@@ -181,7 +181,7 @@ export default function HomePage() {
           />
         </div>
         <p className="text-zinc-500 text-xs text-center px-4">
-          &copy; {new Date().getFullYear()} Loud Inside. <br className="md:hidden" /> Sebuah karya tugas akhir skripsi oleh <span className="text-zinc-300 font-semibold">Selvia Widi Triannisa</span>.
+          &copy; {new Date().getFullYear()} Loud Inside. <br className="md:hidden" /> Sebuah karya oleh <span className="text-zinc-300 font-semibold">Selvia Widi Triannisa</span>.
         </p>
       </footer>
     </main>
