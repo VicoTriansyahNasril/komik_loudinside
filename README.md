@@ -1,3 +1,5 @@
+*Read this in other languages: [English](README.md), [Indonesian](README-id.md).*
+
 # Webtoon Reader Platform 📚✨
 
 **🌍 Live Demo:** [Komik Loud Inside](https://loudinside.vercel.app/)
