@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { chapterList } from '@/data';
 import { ChapterListMenu } from './ChapterListMenu';
+import { WebtoonChapter } from '@/data/schema';
 
 interface BottomOverlayProps {
   showOverlay: boolean;
@@ -8,8 +9,8 @@ interface BottomOverlayProps {
   setShowChapterMenu: (show: boolean) => void;
   chapterId: string;
   chapterIndex: number;
-  prevChapter: any;
-  nextChapter: any;
+  prevChapter: WebtoonChapter | null;
+  nextChapter: WebtoonChapter | null;
   onNavigate: (id: string) => void;
 }
 

@@ -1,11 +1,12 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ChapterListMenu } from './ChapterListMenu';
+import { WebtoonChapter } from '@/data/schema';
 
 interface EndOfChapterNavProps {
   activeChapterTitle: string;
   chapterId: string;
-  prevChapter: any;
-  nextChapter: any;
+  prevChapter: WebtoonChapter | null;
+  nextChapter: WebtoonChapter | null;
   onNavigate: (id: string) => void;
 }
 
