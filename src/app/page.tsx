@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Play, BookOpen } from 'lucide-react';
+import { Play, BookOpen, Skull, Flame, Zap } from 'lucide-react';
 import { chapterList } from '@/data';
 
 export default function HomePage() {
@@ -40,14 +40,14 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-black text-white pb-10">
+    <main className="min-h-screen bg-black text-white pb-10 font-sans selection:bg-red-600 selection:text-white">
       {/* Splash Screen */}
       {showSplash && (
         <div 
-          className={`fixed inset-0 z-50 bg-black flex flex-col items-center justify-center transition-opacity duration-500 ease-in-out ${fadeOut ? 'opacity-0' : 'opacity-100'}`}
+          className={`fixed inset-0 z-50 bg-zinc-950 flex flex-col items-center justify-center transition-opacity duration-500 ease-in-out ${fadeOut ? 'opacity-0' : 'opacity-100'}`}
         >
-          <div className="flex flex-col items-center gap-6 animate-pulse">
-            <div className="relative w-48 h-16 md:w-64 md:h-20">
+          <div className="flex flex-col items-center gap-6 animate-bounce">
+            <div className="relative w-48 h-16 md:w-64 md:h-20 drop-shadow-[0_0_15px_rgba(220,38,38,0.8)]">
               <Image
                 src="/assets/chapters/EDU/UPI-Logo-whitee.png"
                 alt="Logo UPI"
@@ -56,16 +56,17 @@ export default function HomePage() {
                 unoptimized
               />
             </div>
-            <div className="text-zinc-400 text-sm md:text-base font-medium tracking-widest uppercase text-center px-4 flex flex-col items-center">
-              <span>Karya</span>
-              <span className="text-white font-bold text-lg md:text-xl mt-2 normal-case tracking-normal">Selvia Widi Triannisa</span>
+            <div className="text-red-500 text-sm md:text-base font-black tracking-[0.3em] uppercase text-center px-4 flex flex-col items-center">
+              <span className="flex items-center gap-2"><Flame className="text-orange-500 animate-pulse"/> KARYA PALING CADAS <Flame className="text-orange-500 animate-pulse"/></span>
+              <span className="text-white font-extrabold text-2xl md:text-3xl mt-2 tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500">SELVIA WIDI TRIANNISA</span>
+              <span className="mt-2 text-xs text-zinc-500">(Bukan komik azab)</span>
             </div>
           </div>
         </div>
       )}
 
       {/* Hero Section */}
-      <div className="relative w-full min-h-[60vh] flex flex-col items-center justify-center pt-20 pb-12">
+      <div className="relative w-full min-h-[60vh] flex flex-col items-center justify-center pt-20 pb-12 overflow-hidden">
         {/* Blurred Background */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {coverImage && (
@@ -73,46 +74,63 @@ export default function HomePage() {
               src={coverImage}
               alt="Cover Blur"
               fill
-              className="object-cover blur-xl opacity-30 scale-110"
+              className="object-cover blur-3xl opacity-40 scale-125 saturate-[3]"
               unoptimized
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-red-950/80 to-black" />
+          
+          {/* Animated bloody/fire effects in background */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-600/20 blur-[100px] rounded-full animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-600/20 blur-[100px] rounded-full animate-pulse delay-700"></div>
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center px-4 text-center max-w-4xl mx-auto w-full">
-          <div className="w-[216px] h-[384px] relative rounded-xl overflow-hidden shadow-2xl mb-6 border border-zinc-800">
+        <div className="relative z-10 flex flex-col items-center px-4 text-center max-w-4xl mx-auto w-full group">
+          <div className="w-[216px] h-[384px] relative rounded-xl overflow-hidden shadow-[0_0_40px_rgba(220,38,38,0.6)] mb-6 border-4 border-red-900 group-hover:scale-105 transition-transform duration-500 group-hover:rotate-2">
             {coverImage ? (
               <Image
                 src={coverImage}
                 alt="Webtoon Cover"
                 fill
-                className="object-cover object-top"
+                className="object-cover object-top contrast-125 saturate-150"
                 unoptimized
               />
             ) : (
-              <div className="w-full h-full bg-zinc-800 flex items-center justify-center">
-                <BookOpen size={48} className="text-zinc-600" />
+              <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
+                <Skull size={64} className="text-red-600 animate-bounce" />
               </div>
             )}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
           </div>
           
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-3">
-            Loud Inside
-          </h1>
-          <p className="text-zinc-400 text-sm md:text-base max-w-2xl mb-6">
-            Dhara, siswi SMP berprestasi yang menjadi sasaran rumor, pengucilan, dan verbal bullying akibat sebuah kesalahpahaman. Tekanan yang terus datang membuatnya terjebak dalam overthinking dan kecemasan yang perlahan menguasai pikirannya. Saat semua orang mulai menjauh, mampukah Dhara menghadapi suara-suara di dalam kepalanya?
+          <div className="flex items-center gap-2 mb-2">
+            <Zap className="text-yellow-400 fill-yellow-400 animate-pulse" size={32} />
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase italic bg-clip-text text-transparent bg-gradient-to-b from-white via-red-500 to-red-900 drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
+              Loud Inside
+            </h1>
+            <Zap className="text-yellow-400 fill-yellow-400 animate-pulse" size={32} />
+          </div>
+          
+          <h2 className="text-xl md:text-2xl font-bold text-red-500 mb-4 tracking-widest uppercase flex items-center gap-2">
+            <Skull size={20} /> Mental Breakdown Brutal <Skull size={20} />
+          </h2>
+
+          <p className="text-zinc-300 text-sm md:text-lg max-w-2xl mb-8 font-medium leading-relaxed bg-black/50 p-4 rounded-xl border border-red-900/50 backdrop-blur-sm shadow-xl">
+            Dhara, siswi SMP berprestasi yang mendadak kena <em>cancel culture</em> gara-gara rumor gak jelas! 
+            Dibully, dijauhin, sampai overthinking tingkat dewa! Saat dunia terasa runtuh, 
+            <strong className="text-red-500"> mampukah Dhara menghadapi suara-suara di kepalanya sambil dengerin musik underground?! \m/</strong>
           </p>
           
           <div className="flex items-center gap-4">
             {firstChapterId && (
               <Link 
                 href={`/read/${firstChapterId}`}
-                className="bg-white text-black px-8 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-zinc-200 transition-transform hover:scale-105 active:scale-95"
+                className="bg-gradient-to-r from-red-700 to-red-900 text-white px-10 py-4 rounded-lg font-black text-xl flex items-center gap-3 hover:from-red-600 hover:to-red-800 transition-all hover:scale-110 active:scale-90 hover:shadow-[0_0_30px_rgba(220,38,38,0.8)] uppercase tracking-widest border-2 border-red-500"
               >
-                <Play size={20} className="fill-black" />
-                Mulai Baca
+                <Flame className="animate-pulse" size={28} />
+                GAS BACA SEKARANG!
+                <Skull size={24} />
               </Link>
             )}
           </div>
@@ -120,13 +138,16 @@ export default function HomePage() {
       </div>
 
       {/* Chapter List Section */}
-      <div className="max-w-4xl mx-auto px-4 mt-8">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold border-l-4 border-white pl-3">Semua Chapter</h2>
-          <span className="text-zinc-500 text-sm">{chapterList.length} Chapters</span>
+      <div className="max-w-4xl mx-auto px-4 mt-12 relative z-10">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-3xl font-black italic uppercase text-white flex items-center gap-3 drop-shadow-md">
+            <div className="w-2 h-10 bg-red-600 rounded-full animate-pulse"></div>
+            Daftar Dosa (Chapter)
+          </h2>
+          <span className="bg-red-950 text-red-400 px-4 py-1 rounded-full text-sm font-bold border border-red-900 shadow-[0_0_10px_rgba(220,38,38,0.3)]">{chapterList.length} Trek Bising</span>
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-4">
           {chapterList.map((ch, index) => {
             const thumbnail = ch.coverUrl || ch.panels[0]?.imageUrl;
             
@@ -134,33 +155,40 @@ export default function HomePage() {
               <Link 
                 key={ch.id} 
                 href={`/read/${ch.id}`}
-                className={`group flex items-center gap-4 py-3 ${index !== chapterList.length - 1 ? 'border-b border-zinc-800/60' : ''} hover:bg-zinc-900/40 transition-colors px-2 rounded-lg`}
+                className="group relative flex items-center gap-4 p-3 bg-zinc-900/50 hover:bg-zinc-800/80 transition-all rounded-xl border border-zinc-800 hover:border-red-600/50 hover:shadow-[0_0_20px_rgba(220,38,38,0.2)] overflow-hidden"
               >
-                <div className="w-[120px] h-[76px] sm:w-[140px] sm:h-[88px] shrink-0 relative bg-zinc-800 rounded-md overflow-hidden">
+                {/* Weird hover effect bg */}
+                <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-transparent translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 z-0"></div>
+
+                <div className="w-[120px] h-[76px] sm:w-[140px] sm:h-[88px] shrink-0 relative bg-black rounded-lg overflow-hidden border-2 border-zinc-800 group-hover:border-red-500 transition-colors z-10">
                   {thumbnail ? (
                     <Image
                       src={thumbnail}
                       alt={ch.title}
                       fill
-                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover object-top group-hover:scale-110 group-hover:rotate-3 group-hover:saturate-150 transition-all duration-500"
                       unoptimized
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                      <BookOpen size={24} className="text-zinc-600" />
+                      <Skull size={32} className="text-zinc-600 group-hover:text-red-500 transition-colors group-hover:animate-bounce" />
                     </div>
                   )}
                 </div>
                 
-                <div className="flex-1 min-w-0 flex flex-col justify-center">
-                  <h3 className="font-bold text-white text-sm sm:text-base line-clamp-1 transition-colors uppercase">
+                <div className="flex-1 min-w-0 flex flex-col justify-center z-10">
+                  <h3 className="font-black text-white text-lg sm:text-xl line-clamp-1 group-hover:text-red-400 transition-colors uppercase italic tracking-wide">
                     {ch.title}
                   </h3>
+                  <p className="text-zinc-500 text-xs sm:text-sm mt-1 uppercase font-bold tracking-widest group-hover:text-zinc-300">
+                    Klik untuk kehancuran mental
+                  </p>
                 </div>
 
-                <div className="shrink-0 pl-2">
-                  <button className="px-4 py-1.5 rounded-full border border-zinc-600 text-xs sm:text-sm font-medium text-zinc-300 group-hover:border-zinc-400 group-hover:text-white transition-colors">
-                    Baca
+                <div className="shrink-0 pl-2 pr-4 z-10">
+                  <button className="flex items-center gap-2 px-5 py-2 rounded-lg bg-zinc-950 border-2 border-red-900 text-xs sm:text-sm font-black text-red-500 group-hover:bg-red-600 group-hover:text-white group-hover:border-red-500 transition-all uppercase tracking-widest hover:scale-110">
+                    <Play size={16} className="group-hover:fill-white" />
+                    HAJAR
                   </button>
                 </div>
               </Link>
@@ -170,8 +198,12 @@ export default function HomePage() {
       </div>
 
       {/* Footer Section */}
-      <footer className="max-w-4xl mx-auto w-full mt-16 pt-8 pb-6 border-t border-zinc-800/60 flex flex-col items-center justify-center gap-3">
-        <div className="relative w-32 h-10 opacity-60 hover:opacity-100 transition-opacity">
+      <footer className="max-w-4xl mx-auto w-full mt-24 pt-8 pb-10 border-t-4 border-dashed border-red-900/40 flex flex-col items-center justify-center gap-6 relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black px-4">
+          <Skull size={32} className="text-red-900 hover:text-red-500 transition-colors animate-pulse cursor-pointer" />
+        </div>
+        
+        <div className="relative w-40 h-12 opacity-50 hover:opacity-100 transition-opacity filter drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
           <Image
             src="/assets/chapters/EDU/UPI-Logo-whitee.png"
             alt="Logo UPI"
@@ -180,17 +212,23 @@ export default function HomePage() {
             unoptimized
           />
         </div>
-        <p className="text-zinc-500 text-xs text-center px-4">
-          &copy; {new Date().getFullYear()} Loud Inside. <br className="md:hidden" /> Sebuah karya oleh{' '}
-          <a 
-            href="https://www.linkedin.com/in/selviawiditriannisa/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-zinc-300 font-semibold hover:text-white hover:underline transition-colors"
-          >
-            Selvia Widi Triannisa
-          </a>.
-        </p>
+        
+        <div className="text-center">
+          <p className="text-zinc-400 text-sm font-medium px-4 mb-2">
+            &copy; {new Date().getFullYear()} LOUD INSIDE (Paling Cadas).
+          </p>
+          <p className="text-zinc-500 text-xs px-4 flex flex-col sm:flex-row items-center justify-center gap-1">
+            <span>Ditempa di neraka tugas akhir oleh</span>
+            <a 
+              href="https://www.linkedin.com/in/selviawiditriannisa/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-red-500 font-black hover:text-white hover:underline transition-colors uppercase tracking-widest px-2 py-1 bg-red-950/30 rounded"
+            >
+              Selvia Widi Triannisa \m/
+            </a>
+          </p>
+        </div>
       </footer>
     </main>
   );
