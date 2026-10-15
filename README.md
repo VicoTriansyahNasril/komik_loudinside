@@ -10,7 +10,7 @@ An interactive, custom-built web application designed to showcase a digital comi
 
 This project is a collaborative effort born out of a university thesis. 
 
-- **The Art & Story**: The illustrations, characters, and storyline were entirely created by my friend as the core deliverable for their final thesis project. (Their work has also been officially published on the Webtoon platform!)
+- **The Art & Story**: The illustrations, characters, and storyline were entirely created by my friend as the core deliverable for her final thesis project. (Their work has also been officially published on the Webtoon platform!)
 - **The Platform**: I engineered and developed this entire web application from scratch to serve as the interactive, digital exhibition medium for their thesis. 
 
 This separation of concerns allowed us to combine creative storytelling with modern web development, resulting in a seamless reading experience.
