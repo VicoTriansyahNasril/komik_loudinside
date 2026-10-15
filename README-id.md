@@ -10,7 +10,7 @@ Aplikasi web interaktif buatan khusus yang dirancang untuk menampilkan komik dig
 
 Proyek ini adalah upaya kolaboratif yang lahir dari sebuah tugas akhir universitas.
 
-- **Seni & Cerita**: Ilustrasi, karakter, dan alur cerita sepenuhnya dibuat oleh teman saya sebagai hasil utama untuk proyek tugas akhir mereka. (Karya mereka juga telah diterbitkan secara resmi di platform Webtoon!)
+- **Seni & Cerita**: Ilustrasi, karakter, dan alur cerita sepenuhnya dibuat oleh teman saya sebagai hasil utama untuk proyek tugas akhir ida. (Karya dia juga telah diterbitkan secara resmi di platform Webtoon!)
 - **Platform**: Saya merancang dan mengembangkan seluruh aplikasi web ini dari awal untuk berfungsi sebagai media pameran digital interaktif untuk tugas akhir mereka.
 
 Pemisahan tugas ini memungkinkan kami untuk menggabungkan penceritaan kreatif dengan pengembangan web modern, menghasilkan pengalaman membaca yang mulus.
